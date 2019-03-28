@@ -1,25 +1,21 @@
-let board = [ 0, 0, 0, 0, 0, 0, 0, 0, 0];
+let board = [ [0, 0, 0], [0, 0, 0], [0, 0, 0]];
 let isXTurn = 1;
 
-function takeTurn(loc) {
-    nextPlayer = -isXTurn;
+function swapPlayer(curPlayer) {
+    nextPlayer = -curPlayer;
     return nextPlayer;
 }
 
-function printTurn() {
-    console.log(isXTurn);
-}
-
-function placeMark(loc, board) {
-    let gameBoard = [];
-    gameBoard.concat(board);
-    gameBoard[loc] = isXTurn;
+function placeMark(row, col, board, player) {
+    console.log(board);
+    let gameBoard = JSON.parse(JSON.stringify(board));
+    gameBoard[row][col] = player;
     return gameBoard;
 }
 
 module.exports = {
     board: board,
     isXTurn: isXTurn,
-    takeTurn: takeTurn,
+    swapPlayer: swapPlayer,
     placeMark: placeMark
 };
