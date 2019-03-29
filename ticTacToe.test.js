@@ -35,7 +35,7 @@ test('Placing a mark in to 1-2 (1st row 2nd column) should return board with 1 i
     expect(currentBoard[0][1]).toBe(1);
 });
 
-test('Checking for win function returns correct player', () => {
+test('Checking for win function returns correct result', () => {
     let winner = ticTacToe.checkWinner(1, 1, 1);
     expect(winner).toBe(true);
     winner = ticTacToe.checkWinner(-1, -1, -1);
