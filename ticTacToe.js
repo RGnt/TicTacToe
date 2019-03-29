@@ -1,5 +1,7 @@
-let board = [ [0, 0, 0], [0, 0, 0], [0, 0, 0]];
+const initialBoard = [ [0, 0, 0], [0, 0, 0], [0, 0, 0]];
 let isXTurn = 1;
+const playerXWinValue = 3;
+const playerOWinValue = -3;
 
 function swapPlayer(curPlayer) {
     nextPlayer = -curPlayer;
@@ -7,15 +9,35 @@ function swapPlayer(curPlayer) {
 }
 
 function placeMark(row, col, board, player) {
-    console.log(board);
     let gameBoard = JSON.parse(JSON.stringify(board));
     gameBoard[row][col] = player;
     return gameBoard;
 }
 
+function checkWinner(loc1, loc2, loc3) {
+    if(loc1 == loc2 && loc2 == loc3 && loc1 != 0) {
+        return true;
+    } 
+    return false;
+}
+
+function isWinnerFound(gameBoard, currentPlayer) {
+    if(checkWinner(gameBoard[0][0], gameBoard[0][1], gameBoard[0][2]) || 
+    checkWinner(gameBoard[1][0], gameBoard[1][1], gameBoard[1][2])) {
+            if(currentPlayer == 1) {
+                return "X";
+            } else {
+                return "O";
+            }
+       }
+    return "-";
+}
+
 module.exports = {
-    board: board,
+    board: initialBoard,
     isXTurn: isXTurn,
     swapPlayer: swapPlayer,
-    placeMark: placeMark
+    placeMark: placeMark,
+    checkWinner: checkWinner,
+    isWinnerFound: isWinnerFound
 };
