@@ -44,13 +44,13 @@ test('Checking for win function returns correct player', () => {
     expect(winner).toBe(false);
 });
 
-test('Checking isWinnerFound works', ()=> {
+test('Checking if isWinnerFound works', ()=> {
     const gameTest = require("./ticTacToe");
     let winner = "-";
     expect(winner).toBe("-");
     currentPlayer = gameTest.isXTurn;
-    gameTest.board = gameTest.placeMark(0, 0, gameTest.board, currentPlayer);
-    gameTest.board = gameTest.placeMark(0, 1, gameTest.board, currentPlayer);
+    gameTest.board = gameTest.placeMark(2, 0, gameTest.board, currentPlayer);
+    gameTest.board = gameTest.placeMark(1, 1, gameTest.board, currentPlayer);
     gameTest.board = gameTest.placeMark(0, 2, gameTest.board, currentPlayer);
     console.log(currentPlayer);
     let arr = JSON.parse(JSON.stringify(gameTest.board));
@@ -59,4 +59,92 @@ test('Checking isWinnerFound works', ()=> {
     currentPlayer = gameTest.swapPlayer(currentPlayer);
     winner = gameTest.isWinnerFound(arr, currentPlayer);
     expect(winner).toBe("O");
+});
+
+test('Vertical 1 win', () => {
+    const gameTest = require("./ticTacToe");
+    let gameBoard = JSON.parse(JSON.stringify(gameTest.board));
+    currentPlayer = gameTest.isXTurn;
+    gameBoard = gameTest.placeMark(0,0, gameBoard, currentPlayer);
+    gameBoard = gameTest.placeMark(0,1, gameBoard, currentPlayer);
+    gameBoard = gameTest.placeMark(0,2, gameBoard, currentPlayer);
+    winner = gameTest.isWinnerFound(gameBoard, currentPlayer);
+    expect(winner).toBe("X");    
+});
+
+test('Vertical 2 win', () => {
+    const gameTest = require("./ticTacToe");
+    let gameBoard = JSON.parse(JSON.stringify(gameTest.board));
+    currentPlayer = gameTest.isXTurn;
+    gameBoard = gameTest.placeMark(1,0, gameBoard, currentPlayer);
+    gameBoard = gameTest.placeMark(1,1, gameBoard, currentPlayer);
+    gameBoard = gameTest.placeMark(1,2, gameBoard, currentPlayer);
+    winner = gameTest.isWinnerFound(gameBoard, currentPlayer);
+    expect(winner).toBe("X");    
+});
+
+test('Vertical 3 win', () => {
+    const gameTest = require("./ticTacToe");
+    let gameBoard = JSON.parse(JSON.stringify(gameTest.board));
+    currentPlayer = gameTest.isXTurn;
+    gameBoard = gameTest.placeMark(2,0, gameBoard, currentPlayer);
+    gameBoard = gameTest.placeMark(2,1, gameBoard, currentPlayer);
+    gameBoard = gameTest.placeMark(2,2, gameBoard, currentPlayer);
+    winner = gameTest.isWinnerFound(gameBoard, currentPlayer);
+    expect(winner).toBe("X");    
+});
+
+test('Horizontal 1 win', () => {
+    const gameTest = require("./ticTacToe");
+    let gameBoard = JSON.parse(JSON.stringify(gameTest.board));
+    currentPlayer = gameTest.isXTurn;
+    gameBoard = gameTest.placeMark(0,0, gameBoard, currentPlayer);
+    gameBoard = gameTest.placeMark(1,0, gameBoard, currentPlayer);
+    gameBoard = gameTest.placeMark(2,0, gameBoard, currentPlayer);
+    winner = gameTest.isWinnerFound(gameBoard, currentPlayer);
+    expect(winner).toBe("X");    
+});
+
+test('Horizontal 2 win', () => {
+    const gameTest = require("./ticTacToe");
+    let gameBoard = JSON.parse(JSON.stringify(gameTest.board));
+    currentPlayer = gameTest.isXTurn;
+    gameBoard = gameTest.placeMark(0,1, gameBoard, currentPlayer);
+    gameBoard = gameTest.placeMark(1,1, gameBoard, currentPlayer);
+    gameBoard = gameTest.placeMark(2,1, gameBoard, currentPlayer);
+    winner = gameTest.isWinnerFound(gameBoard, currentPlayer);
+    expect(winner).toBe("X");    
+});
+
+test('Horizontal 3 win', () => {
+    const gameTest = require("./ticTacToe");
+    let gameBoard = JSON.parse(JSON.stringify(gameTest.board));
+    currentPlayer = gameTest.isXTurn;
+    gameBoard = gameTest.placeMark(0,2, gameBoard, currentPlayer);
+    gameBoard = gameTest.placeMark(1,2, gameBoard, currentPlayer);
+    gameBoard = gameTest.placeMark(2,2, gameBoard, currentPlayer);
+    winner = gameTest.isWinnerFound(gameBoard, currentPlayer);
+    expect(winner).toBe("X");    
+});
+
+test('Front slope diagonal win', () => {
+    const gameTest = require("./ticTacToe");
+    let gameBoard = JSON.parse(JSON.stringify(gameTest.board));
+    currentPlayer = gameTest.isXTurn;
+    gameBoard = gameTest.placeMark(0,0, gameBoard, currentPlayer);
+    gameBoard = gameTest.placeMark(1,1, gameBoard, currentPlayer);
+    gameBoard = gameTest.placeMark(2,2, gameBoard, currentPlayer);
+    winner = gameTest.isWinnerFound(gameBoard, currentPlayer);
+    expect(winner).toBe("X");  
+});
+
+test('Back slope diagonal win', () => {
+    const gameTest = require("./ticTacToe");
+    let gameBoard = JSON.parse(JSON.stringify(gameTest.board));
+    currentPlayer = gameTest.isXTurn;
+    gameBoard = gameTest.placeMark(2,2, gameBoard, currentPlayer);
+    gameBoard = gameTest.placeMark(1,1, gameBoard, currentPlayer);
+    gameBoard = gameTest.placeMark(0,2, gameBoard, currentPlayer);
+    winner = gameTest.isWinnerFound(gameBoard, currentPlayer);
+    expect(winner).toBe("X");  
 });

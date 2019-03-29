@@ -23,7 +23,13 @@ function checkWinner(loc1, loc2, loc3) {
 
 function isWinnerFound(gameBoard, currentPlayer) {
     if(checkWinner(gameBoard[0][0], gameBoard[0][1], gameBoard[0][2]) || 
-    checkWinner(gameBoard[1][0], gameBoard[1][1], gameBoard[1][2])) {
+       checkWinner(gameBoard[1][0], gameBoard[1][1], gameBoard[1][2]) ||
+       checkWinner(gameBoard[2][0], gameBoard[2][1], gameBoard[2][2]) ||
+       checkWinner(gameBoard[0][0], gameBoard[1][0], gameBoard[2][0]) ||
+       checkWinner(gameBoard[0][1], gameBoard[1][1], gameBoard[2][1]) ||
+       checkWinner(gameBoard[0][2], gameBoard[1][2], gameBoard[2][2]) ||
+       checkWinner(gameBoard[0][0], gameBoard[1][1], gameBoard[2][2]) ||
+       checkWinner(gameBoard[2][0], gameBoard[1][1], gameBoard[0][2])) {
             if(currentPlayer == 1) {
                 return "X";
             } else {
