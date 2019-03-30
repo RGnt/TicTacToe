@@ -148,3 +148,23 @@ test('Back slope diagonal win', () => {
     winner = gameTest.isWinnerFound(gameBoard, currentPlayer);
     expect(winner).toBe("X");  
 });
+
+test('Is move legal', () => {
+    let expected = false;
+    let gameBoard = JSON.parse(JSON.stringify(ticTacToe.board));
+    let player = ticTacToe.isXTurn;
+    let player2 = ticTacToe.swapPlayer(player);
+    gameBoard = ticTacToe.placeMark(0,1, gameBoard, player);
+    gameBoard = ticTacToe.placeMark(1,0, gameBoard, player2);
+
+    //cases where tests return false
+    let actual = ticTacToe.isMoveLegal(0,1, gameBoard);
+    expect(actual).toBe(expected);
+    actual = ticTacToe.isMoveLegal(1,0, gameBoard);
+    expect(actual).toBe(expected);
+
+    //case where move is legal
+    expected = true;
+    actual = ticTacToe.isMoveLegal(0,0, gameBoard);
+    expect(actual).toBe(expected);    
+});

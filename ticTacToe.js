@@ -39,11 +39,19 @@ function isWinnerFound(gameBoard, currentPlayer) {
     return "-";
 }
 
+function isMoveLegal(row, col, board) {
+    if(board[row][col] != 0) {
+        return false;
+    }
+    return true;
+}
+
 module.exports = {
     board: initialBoard,
     isXTurn: isXTurn,
     swapPlayer: swapPlayer,
     placeMark: placeMark,
     checkWinner: checkWinner,
-    isWinnerFound: isWinnerFound
+    isWinnerFound: isWinnerFound,
+    isMoveLegal: isMoveLegal
 };
